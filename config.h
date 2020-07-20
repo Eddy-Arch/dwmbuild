@@ -1,13 +1,13 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 3;
+static const unsigned int borderpx  = 2;
 static const unsigned int gappx     = 5;        /* gaps between windows */        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=10" };
-static const char dmenufont[]       = "monospace:size=10";
+static const char *fonts[]          = { "xos4 Terminus:size=10" };
+static const char dmenufont[]       = "xos4 Terminus:size=10";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -20,7 +20,7 @@ static const char *colors[][3]      = {
 };
 
 static const char *const autostart[] = {
-	"dwmbar", NULL,
+	"dwmblocks", NULL,"wallpaper", NULL,
 	NULL /* terminate */
 };
 
@@ -44,9 +44,9 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
-	{ "[M]",      monocle },
+	{ "❏",      tile },    /* first entry is default */
+	{ "▧",      NULL },    /* no layout function means floating behavior */
+	{ "🔍",      monocle },
 };
 
 /* key definitions toggleview,  */
@@ -69,12 +69,18 @@ static const char *firefox[] = {"firefox-developer-edition", NULL };
 static const char *discord[] = {"discord", NULL };
 static const char *slock[] = {"slock", NULL };
 static const char *shutdown[] = {"shutdown","now", NULL };
+static const char *next[] = {"mpc","next", NULL };
+static const char *pausesong[] = {"mpc","toggle", NULL };
+static const char *prev[] = {"mpc","prev", NULL };
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,                       XK_f,      spawn,          {.v = firefox} },
 	{ MODKEY|ShiftMask,                       XK_s,      spawn,          {.v = shutdown} },
 	{ MODKEY|ShiftMask,                       XK_l,      spawn,          {.v = slock} },
+	{ MODKEY|ShiftMask,                       XK_j,      spawn,          {.v = prev} },
+	{ MODKEY|ShiftMask,                       XK_h,      spawn,          {.v = pausesong} },
+	{ MODKEY|ShiftMask,                       XK_k,      spawn,          {.v = next} },
 	{ MODKEY|ShiftMask,                       XK_d,      spawn,          {.v = discord} },
 	{ MODKEY,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
